@@ -106,7 +106,7 @@ do_checksum(tcpedit_t *tcpedit, uint8_t *data, int proto, int len) {
             }
             sum += ntohs(IPPROTO_UDP + len);
             sum += do_checksum_math((uint16_t *)udp, len);
-            udp->uh_sum = CHECKSUM_CARRY(sum);
+            udp->uh_sum = 0;
             break;
 
         case IPPROTO_ICMP:
